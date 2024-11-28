@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.onboarding.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_main"
+            app:destination="@id/main"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_permissionFragment"
+            app:destination="@id/permissionFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_selectFolderFragment"
+            app:destination="@id/selectFolderFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_otpFragment"
+            app:destination="@id/otpFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <include app:graph="@navigation/main" />
+    <fragment
+        android:id="@+id/permissionFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.onboarding.PermissionFragment"
+        android:label="fragment_permission"
+        tools:layout="@layout/fragment_permission" >
+        <action
+            android:id="@+id/action_permissionFragment_to_selectFolderFragment"
+            app:destination="@id/selectFolderFragment"
+            app:popUpTo="@id/permissionFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_permissionFragment_to_main"
+            app:destination="@id/main"
+            app:popUpTo="@id/permissionFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectFolderFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.onboarding.SelectFolderFragment"
+        android:label="fragment_select_folder"
+        tools:layout="@layout/fragment_select_folder" >
+        <action
+            android:id="@+id/action_selectFolderFragment_to_folderListFragment"
+            app:destination="@id/folderListFragment"
+            app:popUpTo="@id/selectFolderFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.onboarding.OtpFragment"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otpFragment_to_selectFolderFragment"
+            app:destination="@id/selectFolderFragment"
+            app:popUpTo="@id/otpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_otpFragment_to_permissionFragment"
+            app:destination="@id/permissionFragment"
+            app:popUpTo="@id/otpFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_otpFragment_to_main"
+            app:destination="@id/main"
+            app:popUpTo="@id/otpFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/folderListFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.onboarding.FolderListFragment"
+        android:label="fragment_folder_list"
+        tools:layout="@layout/fragment_folder_list" >
+        <action
+            android:id="@+id/action_folderListFragment_to_main"
+            app:destination="@id/main"
+            app:popUpTo="@id/folderListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

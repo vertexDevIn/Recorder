@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.main.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_logsFragment"
+            app:destination="@id/logsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addLeadFragment"
+            app:destination="@id/addLeadFragment"
+            app:enterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+
+
+    <!-- Logs Fragment for "All Leads" -->
+    <fragment
+        android:id="@+id/logsFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.main.LogsFragment"
+        android:label="fragment_logs"
+        tools:layout="@layout/fragment_logs" >
+        <argument
+            android:name="tagStudent"
+            app:argType="string"
+            android:defaultValue="empty" />
+        <argument
+            android:name="startDate"
+            app:argType="string"
+            android:defaultValue="empty" />
+        <argument
+            android:name="endDate"
+            app:argType="string"
+            android:defaultValue="empty" />
+        <argument
+            android:name="cardId"
+            app:argType="string"
+            android:defaultValue="empty" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="All Students" />
+        <argument
+            android:name="fromAction"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_logsFragment_to_filterBottomsheetFragment"
+            app:destination="@id/filterBottomsheetFragment"
+            app:enterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+        <action
+            android:id="@+id/action_logsFragment_to_addLeadFragment"
+            app:destination="@id/addLeadFragment"
+            app:enterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+        <argument
+            android:name="isAllLead"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="fromFilter"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.main.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_folderListFragment2"
+            app:destination="@id/folderListFragment2"
+            app:popUpTo="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterBottomsheetFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.main.FilterBottomsheetFragment"
+        android:label="fragment_filter_bottomsheet"
+        tools:layout="@layout/fragment_filter_bottomsheet" >
+        <action
+            android:id="@+id/action_filterBottomsheetFragment_to_logsFragment"
+            app:destination="@id/logsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addLeadFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.main.AddLeadFragment"
+        android:label="fragment_add_lead"
+        tools:layout="@layout/fragment_add_lead" >
+        <argument
+            android:name="lead"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/callLogsFragment"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.main.CallLogsFragment"
+        android:label="fragment_call_logs"
+        tools:layout="@layout/fragment_call_logs" />
+    <fragment
+        android:id="@+id/folderListFragment2"
+        android:name="in.vertexdev.mobile.call_rec.ui.frags.onboarding.FolderListFragment"
+        android:label="fragment_folder_list"
+        tools:layout="@layout/fragment_folder_list" >
+        <argument android:name="fromMain" />
+    </fragment>
+
+
+</navigation>

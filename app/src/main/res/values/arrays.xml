@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="country_codes">
+        <item>+1 (USA)</item>
+        <item>+44 (UK)</item>
+        <item>+91 (India)</item>
+        <item>+81 (Japan)</item>
+        <item>+61 (Australia)</item>
+        <item>+49 (Germany)</item>
+        <item>+33 (France)</item>
+        <item>+39 (Italy)</item>
+        <item>+86 (China)</item>
+        <item>+7 (Russia)</item>
+        <item>+82 (South Korea)</item>
+        <item>+34 (Spain)</item>
+        <item>+55 (Brazil)</item>
+        <item>+27 (South Africa)</item>
+        <item>+63 (Philippines)</item>
+        <item>+62 (Indonesia)</item>
+        <item>+64 (New Zealand)</item>
+        <item>+52 (Mexico)</item>
+        <item>+31 (Netherlands)</item>
+        <item>+47 (Norway)</item>
+        <item>+46 (Sweden)</item>
+        <item>+41 (Switzerland)</item>
+        <item>+45 (Denmark)</item>
+        <item>+48 (Poland)</item>
+        <item>+351 (Portugal)</item>
+        <item>+32 (Belgium)</item>
+        <item>+20 (Egypt)</item>
+        <item>+66 (Thailand)</item>
+        <item>+65 (Singapore)</item>
+        <item>+90 (Turkey)</item>
+        <item>+971 (United Arab Emirates)</item>
+        <item>+234 (Nigeria)</item>
+        <item>+255 (Tanzania)</item>
+        <item>+263 (Zimbabwe)</item>
+        <item>+977 (Nepal)</item>
+        <item>+94 (Sri Lanka)</item>
+        <item>+880 (Bangladesh)</item>
+        <item>+92 (Pakistan)</item>
+        <item>+60 (Malaysia)</item>
+        <item>+964 (Iraq)</item>
+        <item>+98 (Iran)</item>
+        <item>+357 (Cyprus)</item>
+        <item>+961 (Lebanon)</item>
+        <item>+972 (Israel)</item>
+        <item>+30 (Greece)</item>
+        <item>+36 (Hungary)</item>
+        <item>+380 (Ukraine)</item>
+        <item>+371 (Latvia)</item>
+        <item>+372 (Estonia)</item>
+        <item>+373 (Moldova)</item>
+        <item>+995 (Georgia)</item>
+        <item>+1 (Canada)</item>
+        <item>+1 (Puerto Rico)</item>
+        <item>+1 (Jamaica)</item>
+        <item>+1 (Bahamas)</item>
+        <item>+1 (Trinidad / Tobago)</item>
+        <item>+1 (Barbados)</item>
+        <item>+1 (Dominica)</item>
+        <item>+1 (Saint Lucia)</item>
+        <item>+1 (Saint Vincent and the Grenadines)</item>
+        <item>+353 (Ireland)</item>
+        <item>+370 (Lithuania)</item>
+        <item>+43 (Austria)</item>
+        <item>+386 (Slovenia)</item>
+        <item>+385 (Croatia)</item>
+        <item>+389 (North Macedonia)</item>
+        <item>+381 (Serbia)</item>
+        <item>+48 (Poland)</item>
+        <item>+373 (Moldova)</item>
+        <item>+359 (Bulgaria)</item>
+        <item>+240 (Equatorial Guinea)</item>
+        <item>+212 (Morocco)</item>
+        <item>+213 (Algeria)</item>
+        <item>+216 (Tunisia)</item>
+        <item>+218 (Libya)</item>
+        <item>+221 (Senegal)</item>
+        <item>+225 (Ivory Coast)</item>
+        <item>+226 (Burkina Faso)</item>
+        <item>+227 (Niger)</item>
+        <item>+228 (Togo)</item>
+        <item>+229 (Benin)</item>
+        <item>+230 (Mauritius)</item>
+        <item>+231 (Liberia)</item>
+        <item>+232 (Sierra Leone)</item>
+        <item>+233 (Ghana)</item>
+        <item>+234 (Nigeria)</item>
+        <item>+236 (Central African Republic)</item>
+        <item>+237 (Cameroon)</item>
+        <item>+238 (Cape Verde)</item>
+        <item>+239 (Sao Tome and Principe)</item>
+        <item>+240 (Equatorial Guinea)</item>
+        <item>+241 (Gabon)</item>
+        <item>+242 (Republic of the Congo)</item>
+        <item>+243 (Democratic Republic of the Congo)</item>
+        <item>+244 (Angola)</item>
+        <item>+245 (Guinea-Bissau)</item>
+        <item>+248 (Seychelles)</item>
+        <item>+249 (Sudan)</item>
+        <item>+250 (Rwanda)</item>
+        <item>+251 (Ethiopia)</item>
+        <item>+252 (Somalia)</item>
+        <item>+253 (Djibouti)</item>
+        <item>+254 (Kenya)</item>
+        <item>+255 (Tanzania)</item>
+        <item>+256 (Uganda)</item>
+        <item>+257 (Burundi)</item>
+        <item>+258 (Mozambique)</item>
+        <item>+260 (Zambia)</item>
+        <item>+261 (Madagascar)</item>
+        <item>+263 (Zimbabwe)</item>
+        <item>+264 (Namibia)</item>
+        <item>+265 (Malawi)</item>
+        <item>+266 (Lesotho)</item>
+        <item>+267 (Botswana)</item>
+        <item>+268 (Eswatini)</item>
+        <item>+269 (Comoros)</item>
+        <item>+290 (Saint Helena)</item>
+        <item>+291 (Eritrea)</item>
+        <item>+297 (Aruba)</item>
+        <item>+298 (Faroe Islands)</item>
+        <item>+299 (Greenland)</item>
+        <item>+350 (Gibraltar)</item>
+        <item>+351 (Portugal)</item>
+        <item>+352 (Luxembourg)</item>
+        <item>+353 (Ireland)</item>
+        <item>+354 (Iceland)</item>
+        <item>+355 (Albania)</item>
+        <item>+356 (Malta)</item>
+        <item>+357 (Cyprus)</item>
+        <item>+358 (Finland)</item>
+        <item>+359 (Bulgaria)</item>
+        <item>+370 (Lithuania)</item>
+        <item>+371 (Latvia)</item>
+        <item>+372 (Estonia)</item>
+        <item>+373 (Moldova)</item>
+        <item>+374 (Armenia)</item>
+        <item>+375 (Belarus)</item>
+        <item>+376 (Andorra)</item>
+        <item>+377 (Monaco)</item>
+        <item>+378 (San Marino)</item>
+        <item>+379 (Vatican City)</item>
+        <item>+380 (Ukraine)</item>
+        <item>+381 (Serbia)</item>
+        <item>+382 (Montenegro)</item>
+        <item>+383 (Kosovo)</item>
+        <item>+385 (Croatia)</item>
+        <item>+386 (Slovenia)</item>
+        <item>+387 (Bosnia and Herzegovina)</item>
+        <item>+389 (North Macedonia)</item>
+        <item>+420 (Czech Republic)</item>
+        <item>+421 (Slovakia)</item>
+        <item>+423 (Liechtenstein)</item>
+        <item>+500 (Falkland Islands)</item>
+        <item>+501 (Belize)</item>
+        <item>+502 (Guatemala)</item>
+        <item>+503 (El Salvador)</item>
+        <item>+504 (Honduras)</item>
+        <item>+505 (Nicaragua)</item>
+        <item>+506 (Costa Rica)</item>
+        <item>+507 (Panama)</item>
+        <item>+508 (Saint Pierre and Miquelon)</item>
+        <item>+509 (Haiti)</item>
+        <item>+590 (Guadeloupe)</item>
+        <item>+591 (Bolivia)</item>
+        <item>+592 (Guyana)</item>
+        <item>+593 (Ecuador)</item>
+        <item>+594 (French Guiana)</item>
+        <item>+595 (Paraguay)</item>
+        <item>+596 (Martinique)</item>
+        <item>+597 (Suriname)</item>
+        <item>+598 (Uruguay)</item>
+        <item>+599 (Curacao)</item>
+    </string-array>
+</resources>

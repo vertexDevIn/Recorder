@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/startBreak"
+        android:icon="@drawable/coffe"
+        app:showAsAction="always"
+        android:title="BreaK" />
+
+
+    <item
+        android:id="@+id/powerOnOff"
+        app:showAsAction="always"
+        android:icon="@drawable/power_settings_new_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+        android:title="OnOff" />
+
+    <item
+        android:id="@+id/notification"
+        app:showAsAction="always"
+        android:icon="@drawable/notifications_active_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+        android:title="Notification" />
+</menu>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/home_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+
+        android:title="Home" />
+
+
+    <item
+        android:id="@+id/allLeads"
+        android:icon="@drawable/receipt_long_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+        android:title="All Leads" />
+
+    <item
+        android:id="@+id/allStudent"
+        android:icon="@drawable/baseline_face_24"
+        android:title="All Students" />
+
+
+<!--    <item-->
+<!--        android:id="@+id/callLogsFragment"-->
+<!--        android:icon="@drawable/call_24dp_e8eaed_fill0_wght400_grad0_opsz24"-->
+<!--        android:title="Call Logs" />-->
+
+
+
+    <!-- New All Leads menu item -->
+
+
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/account_circle_24dp_e8eaed_fill0_wght400_grad0_opsz24__1_"
+
+        android:title="Profile" />
+
+
+</menu>
