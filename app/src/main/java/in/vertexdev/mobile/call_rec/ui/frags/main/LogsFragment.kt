@@ -79,8 +79,7 @@ class LogsFragment : Fragment() {
             onStatusClick = this::onStatusClick,
 
 
-
-        )
+            )
 
     }
 
@@ -138,10 +137,10 @@ class LogsFragment : Fragment() {
             val calendar = Calendar.getInstance()
             val dateFormat = SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH)
             // Set the end date to today
-            if(args.fromAction){
+            if (args.fromAction) {
                 viewModel.startDate = dateFormat.format(calendar.time)
                 Log.d("TAG", "startDate::start ${viewModel.startDate} ")
-            }else{
+            } else {
                 viewModel.startDate = null
             }
 
@@ -157,10 +156,10 @@ class LogsFragment : Fragment() {
             // Set the end date to today
 
 
-            if(args.fromAction){
+            if (args.fromAction) {
                 viewModel.endDate = dateFormat.format(calendar.time)
                 Log.d("TAG", "startDate::end ${viewModel.endDate} ")
-            }else{
+            } else {
                 viewModel.endDate = null
             }
         } else {
@@ -190,15 +189,16 @@ class LogsFragment : Fragment() {
                 viewModel.resetFilters()
                 findNavController().navigateUp()
             }
-        }else{
+        } else {
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView).visibility =
                 View.VISIBLE
             requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton).visibility =
                 View.VISIBLE
-            requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener{
-                val action = LogsFragmentDirections.actionLogsFragmentToAddLeadFragment(false)
-                findNavController().navigate(action)
-            }
+            requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
+                .setOnClickListener {
+                    val action = LogsFragmentDirections.actionLogsFragmentToAddLeadFragment(false)
+                    findNavController().navigate(action)
+                }
         }
 
         binding.toolbar.title = args.title
@@ -253,12 +253,12 @@ class LogsFragment : Fragment() {
                 // Handle search query text change (for live search as user types)
                 newText?.let {
                     if (it.length > 3) {
-                       // binding.leadChipGroup.visibility = View.GONE
+                        // binding.leadChipGroup.visibility = View.GONE
                         performSearch(it)
                     }
                     if (it.isEmpty()) {
                         Log.d("TAG", "setOnCloseListener: ")
-                       // binding.leadChipGroup.visibility = View.VISIBLE
+                        // binding.leadChipGroup.visibility = View.VISIBLE
                         viewModel.searchQuery = ""
                         viewModel.fetchData(true)
                     }
@@ -307,7 +307,7 @@ class LogsFragment : Fragment() {
                             is State.Success -> {
                                 binding.progressBar2.visibility = View.GONE
                                 if (it.data.isNotEmpty()) {
-                                    val availableCount = it.data.filter { it.count != "0"}
+                                    val availableCount = it.data.filter { it.count != "0" }
                                     setDataToUi(availableCount)
                                 }
 
@@ -326,7 +326,7 @@ class LogsFragment : Fragment() {
                                 Log.d("leadList", "leadList:${it.data} ")
                                 if (it.data.isNotEmpty()) {
                                     binding.textView21.visibility = View.GONE
-                                    leadAdapter.updateData(it.data,viewModel.tagStudent == "lead" )
+                                    leadAdapter.updateData(it.data, viewModel.tagStudent == "lead")
                                 } else {
                                     binding.textView21.visibility = View.VISIBLE
                                     leadAdapter.updateData(listOf(), true)
@@ -363,7 +363,7 @@ class LogsFragment : Fragment() {
                             }
 
                         } else {
-                           // requireContext().toast("No more data")
+                            // requireContext().toast("No more data")
 
                         }
                     }
@@ -425,8 +425,6 @@ class LogsFragment : Fragment() {
         binding.leadChipGroup.isSingleSelection = true
 
 
-
-
         // Add an "All" chip as the first item in the ChipGroup
         val allChip = Chip(binding.leadChipGroup.context).apply {
             text = "All"
@@ -442,8 +440,8 @@ class LogsFragment : Fragment() {
             }
         }
 
-        if(viewModel.cardId == null && !viewModel.multipleFilterActive){
-            allChip.isChecked =true
+        if (viewModel.cardId == null && !viewModel.multipleFilterActive) {
+            allChip.isChecked = true
         }
 
         // Add the "All" chip to the ChipGroup
@@ -469,7 +467,7 @@ class LogsFragment : Fragment() {
                 }
             }
 
-            if(viewModel.cardId == leadCategory.id){
+            if (viewModel.cardId == leadCategory.id) {
                 chip.isChecked = true
             }
 
@@ -565,7 +563,8 @@ class LogsFragment : Fragment() {
         val noBtn = dialog.findViewById<Button>(R.id.button6)
         val title1 = dialog.findViewById<TextView>(R.id.title)
         val title2 = dialog.findViewById<TextView>(R.id.title2)
-        val dropdownAutoComplete = dialog.findViewById<CustomAutoCompleteTextView>(R.id.dropdown_auto_complete)
+        val dropdownAutoComplete =
+            dialog.findViewById<CustomAutoCompleteTextView>(R.id.dropdown_auto_complete)
         val chipGroupSelected = dialog.findViewById<ChipGroup>(R.id.chip_group_selected)
         val group = dialog.findViewById<Group>(R.id.group_appontment)
         val dateText = dialog.findViewById<EditText>(R.id.dateText)
@@ -589,11 +588,16 @@ class LogsFragment : Fragment() {
             viewModel.countryFilters.collect { state ->
                 when (state) {
                     is State.Failed -> {
-                        Log.e("showCountryUpdateDialog", "Failed to load country filters: ${state.message}")
+                        Log.e(
+                            "showCountryUpdateDialog",
+                            "Failed to load country filters: ${state.message}"
+                        )
                     }
+
                     is State.Loading -> {
                         Log.d("showCountryUpdateDialog", "Loading country filters...")
                     }
+
                     is State.Success -> {
                         Log.d("showCountryUpdateDialog", "Country filters loaded successfully.")
 
@@ -612,21 +616,36 @@ class LogsFragment : Fragment() {
                             if (selected) {
                                 if (!selectedItems.any { it.id == item.id }) { // Use id for comparison
                                     selectedItems.add(item)
-                                    Log.d("showCountryUpdateDialog", "Added item: $item to selectedItems")
+                                    Log.d(
+                                        "showCountryUpdateDialog",
+                                        "Added item: $item to selectedItems"
+                                    )
                                     addChipToGroup(chipGroupSelected, item, true, adapter)
                                 } else {
-                                    Log.d("showCountryUpdateDialogff", "Item already in selectedItems: $item")
+                                    Log.d(
+                                        "showCountryUpdateDialogff",
+                                        "Item already in selectedItems: $item"
+                                    )
                                 }
                             } else {
                                 if (selectedItems.any { it.id == item.id }) { // Use id for comparison
                                     selectedItems.remove(item)
-                                    Log.d("showCountryUpdateDialog", "Removed item: $item from selectedItems")
+                                    Log.d(
+                                        "showCountryUpdateDialog",
+                                        "Removed item: $item from selectedItems"
+                                    )
                                     chipGroupSelected.removeView(
                                         chipGroupSelected.findViewWithTag<Chip>(item.id)
                                     ) // Remove chip
-                                    Log.d("showCountryUpdateDialog", "Removed chip with tag: ${item.id}")
+                                    Log.d(
+                                        "showCountryUpdateDialog",
+                                        "Removed chip with tag: ${item.id}"
+                                    )
                                 } else {
-                                    Log.d("showCountryUpdateDialog", "Item not found in selectedItems: $item")
+                                    Log.d(
+                                        "showCountryUpdateDialog",
+                                        "Item not found in selectedItems: $item"
+                                    )
                                 }
                             }
                         }
@@ -637,7 +656,10 @@ class LogsFragment : Fragment() {
                             Log.d("showCountryUpdateDialog", "Checking country: $countryName")
                             if (lead.goingto_country?.contains(countryName) == true) {
                                 selectedItems.add(i)
-                                Log.d("showCountryUpdateDialog", "Pre-selected country: $countryName")
+                                Log.d(
+                                    "showCountryUpdateDialog",
+                                    "Pre-selected country: $countryName"
+                                )
                             }
                         }
 
@@ -646,7 +668,10 @@ class LogsFragment : Fragment() {
                         // Add pre-selected chips to the ChipGroup
                         for (i in selectedItems) {
                             addChipToGroup(chipGroupSelected, i, true, adapter)
-                            Log.d("showCountryUpdateDialog", "Added chip for pre-selected item: ${i.country}")
+                            Log.d(
+                                "showCountryUpdateDialog",
+                                "Added chip for pre-selected item: ${i.country}"
+                            )
                         }
 
                         dropdownAutoComplete.setAdapter(adapter)
@@ -657,27 +682,42 @@ class LogsFragment : Fragment() {
 
         yesBtn.setOnClickListener {
             if (selectedItems.isNotEmpty()) {
-                Log.d("showCountryUpdateDialog", "Yes button clicked with selected items: $selectedItems")
+                Log.d(
+                    "showCountryUpdateDialog",
+                    "Yes button clicked with selected items: $selectedItems"
+                )
                 this.lifecycleScope.launch {
                     val seasons = lead.goingto_intake?.toListOfStrings() ?: emptyList()
-                    viewModel.updateInterestedCountries(selectedItems, lead.id, seasons).collect { result ->
-                        when (result) {
-                            is State.Failed -> {
-                                Log.e("showCountryUpdateDialog", "Failed to update countries: ${result.message}")
-                                requireContext().toast(result.message)
-                            }
-                            is State.Loading -> {
-                                Log.d("showCountryUpdateDialog", "Updating interested countries...")
-                            }
-                            is State.Success -> {
-                                Log.d("showCountryUpdateDialog", "Successfully updated interested countries.")
-                                selectedItems.clear()
-                                chipGroupSelected.removeAllViews()
-                                dialog.dismiss()
-                                viewModel.fetchData(true)
+                    viewModel.updateInterestedCountries(selectedItems, lead.id, seasons)
+                        .collect { result ->
+                            when (result) {
+                                is State.Failed -> {
+                                    Log.e(
+                                        "showCountryUpdateDialog",
+                                        "Failed to update countries: ${result.message}"
+                                    )
+                                    requireContext().toast(result.message)
+                                }
+
+                                is State.Loading -> {
+                                    Log.d(
+                                        "showCountryUpdateDialog",
+                                        "Updating interested countries..."
+                                    )
+                                }
+
+                                is State.Success -> {
+                                    Log.d(
+                                        "showCountryUpdateDialog",
+                                        "Successfully updated interested countries."
+                                    )
+                                    selectedItems.clear()
+                                    chipGroupSelected.removeAllViews()
+                                    dialog.dismiss()
+                                    viewModel.fetchData(true)
+                                }
                             }
                         }
-                    }
                 }
             } else {
                 Log.d("showCountryUpdateDialog", "Yes button clicked with no selected items.")
@@ -754,15 +794,21 @@ class LogsFragment : Fragment() {
 
                         }
 
-                         val alreadyAdded = lead.goingto_intake?.toListOfStrings()
+                        val alreadyAdded = lead.goingto_intake?.toListOfStrings()
 
                         for (i in it.data) {
                             Log.d("TAG", "showCountryUpdateDialog:${lead.goingto_country} ")
                             Log.d("TAG", "showCountryUpdateDialog d:${i.country_name} ")
                             i.name.let { name ->
                                 if (alreadyAdded?.contains(name) == true) {
-                                    Log.d("TAG", "showIntakeUpdateDialog:lead.goingto_intake::${lead.goingto_intake}")
-                                    Log.d("TAG", "showIntakeUpdateDialog:lead.goingto_intake::${i.name}")
+                                    Log.d(
+                                        "TAG",
+                                        "showIntakeUpdateDialog:lead.goingto_intake::${lead.goingto_intake}"
+                                    )
+                                    Log.d(
+                                        "TAG",
+                                        "showIntakeUpdateDialog:lead.goingto_intake::${i.name}"
+                                    )
                                     selectedItems.add(i)
                                 }
                             }
@@ -1010,7 +1056,6 @@ class LogsFragment : Fragment() {
                     is State.Success -> {
 
 
-
                         // Set up the AutoCompleteTextView with a custom ArrayAdapter
                         val adapter = OptionAdapter(
                             requireContext(),
@@ -1084,21 +1129,22 @@ class LogsFragment : Fragment() {
                     }
 
                 } else {
-                    viewModel.updateStatus(lead.id, selectedItem).collect {
-                        when (it) {
-                            is State.Failed -> {
-                                requireContext().toast(it.message)
-                            }
+                    viewModel.updateStatus(lead.id, selectedItem, remarkText.text.toString())
+                        .collect {
+                            when (it) {
+                                is State.Failed -> {
+                                    requireContext().toast(it.message)
+                                }
 
-                            is State.Loading -> {}
-                            is State.Success -> {
-                                selectedItems.clear()
-                                chipGroupSelected.removeAllViews()
-                                dialog.dismiss()
-                                viewModel.fetchData(true)
+                                is State.Loading -> {}
+                                is State.Success -> {
+                                    selectedItems.clear()
+                                    chipGroupSelected.removeAllViews()
+                                    dialog.dismiss()
+                                    viewModel.fetchData(true)
+                                }
                             }
                         }
-                    }
 
                 }
 
@@ -1144,7 +1190,10 @@ class LogsFragment : Fragment() {
     ) {
         // Determine the name based on the country flag
         val name = if (country) {
-            Log.d("addChipToGroup", "Country flag is true, using country_name: ${option.country_name}")
+            Log.d(
+                "addChipToGroup",
+                "Country flag is true, using country_name: ${option.country_name}"
+            )
             option.country_name
         } else {
             Log.d("addChipToGroup", "Country flag is false, using name: ${option.name}")
@@ -1189,7 +1238,10 @@ class LogsFragment : Fragment() {
 
         // Add the newly created Chip to the ChipGroup
         chipGroup.addView(chip)
-        Log.d("addChipToGroup", "Chip added to ChipGroup, current child count: ${chipGroup.childCount}")
+        Log.d(
+            "addChipToGroup",
+            "Chip added to ChipGroup, current child count: ${chipGroup.childCount}"
+        )
 
         // If the ChipGroup has one or more chips, make it visible
         if (chipGroup.childCount > 0) {

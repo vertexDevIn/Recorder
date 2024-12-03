@@ -233,7 +233,7 @@ class SyncDataService2 : Service() {
                     Log.i("TAG", "ync iteration failed: ${e.message}")
                 }
             }
-            delay(2 * 1000)
+            delay(10000)
         }
     }
 
@@ -278,22 +278,24 @@ class SyncDataService2 : Service() {
     private suspend fun uploadCallLogs() = withContext(Dispatchers.IO) {
         // Calculate the time one hour ago
         val oneHourAgo = System.currentTimeMillis() - TimeUnit.HOURS.toMillis(1)
-        val fiveMinutesAgo = System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(5)
+
 
         // Retrieve the public API key from the DataStore
         val publicApiKey = dataStoreRepo.readDataStoreValue.first().apiKey
 
+        val cursor =   queryRecentCallLogs(oneHourAgo)
+
         // Query recent call logs based on the value of firstTime
-        val cursor = if (firstTime) {
-            queryRecentCallLogs(oneHourAgo)  // Get call logs from the last hour if it's the first run
-        } else {
-            queryRecentCallLogs(fiveMinutesAgo)  // Get the last 5 call logs for subsequent runs
-        }
+//        val cursor = if (firstTime) {
+//            queryRecentCallLogs(oneHourAgo)  // Get call logs from the last hour if it's the first run
+//        } else {
+//            queryRecentCallLogs(fiveMinutesAgo)  // Get the last 5 call logs for subsequent runs
+//        }
 
         // Update the value of firstTime after the first run
-        if (firstTime) {
-            firstTime = false
-        }
+//        if (firstTime) {
+//            firstTime = false
+//        }
 
         // Process each call log retrieved from the cursor
         cursor?.use {

@@ -43,7 +43,7 @@ class LogsViewModel @Inject constructor(
 
     //##########################
     var startDate: String? = null
-    var endDate: String? =  null
+    var endDate: String? = null
     var tagStudent: String = ""
     var cardId: String? = null
     var searchQuery: String = ""
@@ -162,7 +162,7 @@ class LogsViewModel @Inject constructor(
 
         if (responseString.contains("Developer Error")) {
             // Handle the error case
-            if(first){
+            if (first) {
                 fetchInProgress = false
                 _leadList.value = State.Success(listOf())
             }
@@ -182,7 +182,7 @@ class LogsViewModel @Inject constructor(
                     } else {
                         currentNo = (currentNo.toInt() + 1).toString()
 
-                        val t =  datastore.first().pageCount.toInt()
+                        val t = datastore.first().pageCount.toInt()
 
                         itemsPerPage = (itemsPerPage.toInt() + t).toString()
                         Log.d("TAG", "fetchDataitemsPerPage:$itemsPerPage ")
@@ -244,9 +244,9 @@ class LogsViewModel @Inject constructor(
     val employees: StateFlow<State<List<Employee>>> = _employees.asStateFlow()
 
 
-    private fun getGetLeadFilters() = viewModelScope.launch(Dispatchers.IO) {
+    private fun getGetLeadFilters(tagStudent: String) = viewModelScope.launch(Dispatchers.IO) {
         val apiKey = datastore.first().apiKey
-        val response = repository.getFilters("customer.api", "fetch.status.api", apiKey)
+        val response = repository.getFilters("customer.api", "fetch.status.api", apiKey, tagStudent)
         if (response.isSuccessful) {
             Log.d("TAG", "getFilters: ${response.body()}")
             val data = response.body()
@@ -265,7 +265,7 @@ class LogsViewModel @Inject constructor(
 
     private fun getLabelFilters() = viewModelScope.launch(Dispatchers.IO) {
         val apiKey = datastore.first().apiKey
-        val response = repository.getFilters("customer.labels.api", "fetch.api", apiKey)
+        val response = repository.getFilters("customer.labels.api", "fetch.api", apiKey, null)
         if (response.isSuccessful) {
             Log.d("TAG", "getFilters: ${response.body()}")
             val data = response.body()
@@ -285,7 +285,7 @@ class LogsViewModel @Inject constructor(
     private fun getSourceFilters() = viewModelScope.launch(Dispatchers.IO) {
 
         val apiKey = datastore.first().apiKey
-        val response = repository.getFilters("customer.api", "fetch.source.api", apiKey)
+        val response = repository.getFilters("customer.api", "fetch.source.api", apiKey, null)
         if (response.isSuccessful) {
             Log.d("TAG", "getFilters: ${response.body()}")
             val data = response.body()
@@ -305,7 +305,7 @@ class LogsViewModel @Inject constructor(
     private fun getCountriesFilters() = viewModelScope.launch(Dispatchers.IO) {
 
         val apiKey = datastore.first().apiKey
-        val response = repository.getFilters("countries.api", "fetch.api", apiKey)
+        val response = repository.getFilters("countries.api", "fetch.api", apiKey, null)
         if (response.isSuccessful) {
             Log.d("TAG", "getFilters: ${response.body()}")
             val data = response.body()
@@ -325,7 +325,7 @@ class LogsViewModel @Inject constructor(
     private fun getIntakeFilters() = viewModelScope.launch(Dispatchers.IO) {
 
         val apiKey = datastore.first().apiKey
-        val response = repository.getFilters("intakes.api", "fetch.api", apiKey)
+        val response = repository.getFilters("intakes.api", "fetch.api", apiKey, null)
         if (response.isSuccessful) {
             Log.d("TAG", "getFilters: ${response.body()}")
             val data = response.body()
@@ -345,7 +345,7 @@ class LogsViewModel @Inject constructor(
     private fun getBranchesFilters() = viewModelScope.launch(Dispatchers.IO) {
 
         val apiKey = datastore.first().apiKey
-        val response = repository.getFilters("branches.api", "fetch.api", apiKey)
+        val response = repository.getFilters("branches.api", "fetch.api", apiKey, null)
         if (response.isSuccessful) {
             Log.d("TAG", "getFilters: ${response.body()}")
             val data = response.body()
@@ -364,7 +364,7 @@ class LogsViewModel @Inject constructor(
 
 
     fun getAllFilters() = viewModelScope.launch(Dispatchers.IO) {
-        getGetLeadFilters()
+        getGetLeadFilters(tagStudent)
         getLabelFilters()
         getSourceFilters()
         getCountriesFilters()
@@ -481,7 +481,7 @@ class LogsViewModel @Inject constructor(
         }.flowOn(Dispatchers.IO)
     //updateStatus
 
-    fun updateStatus(userId: String, statusId: String) =
+    fun updateStatus(userId: String, statusId: String, note: String) =
         flow<State<Boolean>> {
             emit(State.loading())
             val apiKey = datastore.first().apiKey
@@ -493,7 +493,8 @@ class LogsViewModel @Inject constructor(
                 publicApiKey = apiKey,
                 tagStudent = tagStudent,
                 statusId = statusId,
-                userId = userId
+                userId = userId,
+                note = note
 
 
             )
@@ -657,7 +658,7 @@ class LogsViewModel @Inject constructor(
         }
     }
 
-    fun clearEveryFilter()  =viewModelScope.launch{
+    fun clearEveryFilter() = viewModelScope.launch {
         cardId = null
         filterLeadStatus = null
         filterBranch = null
@@ -670,7 +671,8 @@ class LogsViewModel @Inject constructor(
         startDate = null
         endDate = null
         searchQuery = ""
-        fetchData(true
+        fetchData(
+            true
         )
 
 

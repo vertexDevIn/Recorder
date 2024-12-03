@@ -120,7 +120,9 @@ interface ApiService {
         @Query("api_service_id") apiServiceId: String,
         @Query("api_command") apiCommand: String,
         @Query("public_api_key") publicApiKey: String,
-        @Query("app_key") appKey: String
+        @Query("app_key") appKey: String,
+        @Query("tag_student") tagStudent:String
+
     ): Response<List<StatusItem>>
 
 
@@ -177,7 +179,8 @@ interface ApiService {
         @Query("lead_status") leadStatusId: String,  // Status parameter
         @Query("external_integration") externalIntegration: Int = 1,
         @Query("external_form") externalForm: String = "1",
-        @Query("grant_access") grantAccess: String = "1"
+        @Query("grant_access") grantAccess: String = "1",
+        @Query("addnote") additionalNote: String,  // Additional note
     ): Response<ResponseBody>
 
     @GET("recordrr/auth/check.service")

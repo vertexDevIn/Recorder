@@ -7,13 +7,13 @@ object Constants {
 
 
      //LIVE-PRODUCTION
-//    val BASE_URL = "https://api.sirianoverseas.com/"
-//    val UPLOAD_URL_BASE: String = "https://api.sirianoverseas.com/recordrr/auth/check.service?api_service_id=enquiry.notes.api&api_command=save.incoming.log.api"
+    val BASE_URL = "https://api.sirianoverseas.com/"
+    val UPLOAD_URL_BASE: String = "https://api.sirianoverseas.com/recordrr/auth/check.service?api_service_id=enquiry.notes.api&api_command=save.incoming.log.api"
 
 //    //BETA-TESTING
-    val BASE_URL = "https://api.areksoft.com/"
-    val UPLOAD_URL_BASE: String = "https://api.areksoft.com/recordrr/auth/check.service?api_service_id=enquiry.notes.api&api_command=save.incoming.log.api"
-
+//    val BASE_URL = "https://api.areksoft.com/"
+//    val UPLOAD_URL_BASE: String = "https://api.areksoft.com/recordrr/auth/check.service?api_service_id=enquiry.notes.api&api_command=save.incoming.log.api"
+//
 
 
     

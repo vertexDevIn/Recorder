@@ -120,19 +120,21 @@ class AuthRepository @Inject constructor(private val apiService: ApiService) {
         filterSeasons = filterSeasons ?: listOf(),
         filterLeadStatus2 = filterLeadStatus ?: listOf(),
         pageNo = pageNo ?: DEFAULT_PAGE_NO, // Use default value if null
-         pageCount = pageCount,
+        pageCount = pageCount,
         search = search
     )
 
 
     suspend fun getFilters(
-        apiServiceId: String, apiCommand: String, publicApiKey: String
+        apiServiceId: String, apiCommand: String, publicApiKey: String,
+        tagStudent: String?
 
     ) = apiService.getFilters(
         appKey = APP_KEY,
         publicApiKey = publicApiKey,
         apiCommand = apiCommand,
-        apiServiceId = apiServiceId
+        apiServiceId = apiServiceId,
+        tagStudent = tagStudent ?: ""
 
     )
 
@@ -208,7 +210,8 @@ class AuthRepository @Inject constructor(private val apiService: ApiService) {
         publicApiKey: String,
         tagStudent: String,
         statusId: String,
-        userId: String
+        userId: String,
+        note:String
 
 
     ) = apiService.updateStatus(
@@ -218,7 +221,8 @@ class AuthRepository @Inject constructor(private val apiService: ApiService) {
         publicApiKey = publicApiKey,
         appKey = APP_KEY,
         userId = userId,
-        leadStatusId = statusId
+        leadStatusId = statusId,
+        additionalNote = note
 
 
     )
@@ -271,7 +275,7 @@ class AuthRepository @Inject constructor(private val apiService: ApiService) {
         fileName: String,
         callDuration: Int,
         recordStatus: String,
-        recordedDateTime:String
+        recordedDateTime: String
     ) = apiService.uploadAudioFileDetails(
         publicApiKey = publicApiKey,
         appKey = APP_KEY,
