@@ -29,6 +29,7 @@ import `in`.vertexdev.mobile.call_rec.util.Utils.isServiceRunning
 import `in`.vertexdev.mobile.call_rec.util.Utils.toast
 import `in`.vertexdev.mobile.call_rec.viewModel.AuthViewModel
 import `in`.vertexdev.mobile.call_rec.viewModel.MainViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -222,12 +223,31 @@ class HomeFragment : Fragment() {
             }
         }
 
-        if (!isServiceRunning(requireContext(), SyncDataService2::class.java)) {
-            val serviceIntent = Intent(requireContext(), SyncDataService2::class.java).apply {
-                action = SyncDataService2.Actions.START.toString()
-            }
-            requireContext().startForegroundService(serviceIntent)
+        lifecycleScope.launch {
+            val context = requireContext()
 
+            if (!isServiceRunning(context, SyncDataService2::class.java)) {
+                // Start the service if it is not running
+                val serviceIntent = Intent(context, SyncDataService2::class.java).apply {
+                    action = SyncDataService2.Actions.START.toString()
+                }
+                context.startForegroundService(serviceIntent)
+            } else {
+                // Stop the service and restart it
+                val stopIntent = Intent(context, SyncDataService2::class.java).apply {
+                    action = SyncDataService2.Actions.STOP.toString()
+                }
+                context.startService(stopIntent)
+
+                // Suspend coroutine to wait for a short moment
+                delay(500) // Delay in milliseconds to ensure the service is stopped
+
+                // Restart the service
+                val restartIntent = Intent(context, SyncDataService2::class.java).apply {
+                    action = SyncDataService2.Actions.START.toString()
+                }
+                context.startForegroundService(restartIntent)
+            }
         }
 
 
